@@ -4,23 +4,17 @@ using namespace std;
 
 int main()
 {
-	int n,i, count;
+	int n,i, j, k, count;
 	scanf("%d", &n);
 	int c[n];
 	count = 0;
-	int jump = 0;
+	int jump = -1;
 	for(i=0; i<n; i++)
-	{
 		scanf("%d", &c[i]);
-		if( c[i] == 1 || jump > 2 ){
-			count++;
-			jump = 0;
-		}
-		else if( c[i] == 0 || jump <= 2 ){
-			jump++;
-		}
-
+	for(i=0; i<n; i++, jump++)
+	{
+		if(i < n-2 && c[i+2] == 0)
+			i++;
 	}
-	printf("%d\n", count);
-	return 0;
+	printf("%d\n", jump);
 }
